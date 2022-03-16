@@ -24,9 +24,6 @@ $(call inherit-product, device/realme/RMX3151/device.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := lineage_RMX3151
 PRODUCT_DEVICE := RMX3151
