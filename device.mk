@@ -82,7 +82,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_EXTRA_VNDK_VERSIONS)/etc/audio_policy_configuration.xml
+    $(DEVICE_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml
 
 # fastbootd
 PRODUCT_PACKAGES += \
@@ -95,10 +95,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/idc/mtk-kpd.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/mtk-kpd.idc \
     $(DEVICE_PATH)/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/mtk-kpd.kl
-
-# Init
-PRODUCT_PACKAGES += \
-    init.mt6781.rc
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -115,6 +111,12 @@ PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.controls.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.controls.xml \
+    $(DEVICE_PATH)/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml \
+    $(DEVICE_PATH)/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-hotword.xml
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.RMX3151
@@ -122,3 +124,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.fingerprint.xml
 
+# APNs
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+
+# IMS
+PRODUCT_PACKAGES += \
+    mtk-ims \
+    mtk-ims-telephony
+
+# ImsInit hack
+PRODUCT_PACKAGES += \
+    ImsInit
+
+#Hax
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/TrebleApp/devinput.apk:$(TARGET_COPY_OUT_PRODUCT)/overlay/devinput.apk
