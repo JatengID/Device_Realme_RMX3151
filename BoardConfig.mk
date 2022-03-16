@@ -16,6 +16,10 @@
 
 DEVICE_PATH := device/realme/RMX3151
 
+# A/B
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
+BOARD_USES_RECOVERY_AS_BOOT := true
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
