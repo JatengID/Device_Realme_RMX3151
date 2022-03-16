@@ -56,7 +56,7 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_PACKAGES += \
-    init.mt6768.rc
+    init.mt6781.rc
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
